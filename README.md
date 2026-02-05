@@ -21,6 +21,9 @@ Configure and manage network devices (Cisco routers, Linux hosts) in a GNS3 simu
 - **Auditor** - Security compliance
 - **TrafficGen** - Traffic testing
 
+> [!IMPORTANT]
+> When changing the network topology in GNS3 (adding/removing devices or links), you must **manually modify** `shared/inventory.yaml` to match the new topology.
+
 ## 📋 Requirements
 
 - **Docker** (required)
