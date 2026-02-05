@@ -1,0 +1,7 @@
+[project]
+name = "observer-server"
+version = "0.1.0"
+dependencies = [
+    "mcp[cli]",
+    "napalm"
+]

@@ -1,0 +1,10 @@
+[project]
+name = "deployer-server"
+version = "0.1.0"
+dependencies = [
+    "mcp[cli]",
+    "nornir",
+    "nornir_scrapli",
+    "nornir_utils",
+    "nornir_napalm"
+]
