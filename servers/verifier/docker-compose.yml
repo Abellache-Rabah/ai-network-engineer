@@ -1,0 +1,12 @@
+services:
+  batfish:
+    image: batfish/batfish
+    ports:
+      - "8888:8888"
+      - "9997:9997"
+      - "9996:9996"
+    volumes:
+      - batfish-data:/data
+
+volumes:
+  batfish-data:
