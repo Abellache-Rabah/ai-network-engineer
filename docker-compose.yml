@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  mcp-toolbox:
+    build: .
+    container_name: mcp-toolbox
+    network_mode: "host"
+    volumes:
+      - ./shared/inventory.yaml:/app/shared/inventory.yaml
+      - ./shared/topology_physical.yaml:/app/shared/topology_physical.yaml
+      - ./simulation:/app/simulation
+      - ./servers:/app/servers
+    restart: unless-stopped
