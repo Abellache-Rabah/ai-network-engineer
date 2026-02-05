@@ -70,6 +70,8 @@ Copy MCP server configurations from generated settings to your Claude config:
 gemini
 ```
 
+**Important:** When the CLI starts, type **`@GEMINI.md`** to load the system prompt and agent rules.
+
 Try: *"Show me all devices in the network"* or *"Change PC1 IP to 192.168.1.10/24"*
 
 ## 🎥 Video Demonstration
