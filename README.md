@@ -1,8 +1,7 @@
-# LLM Network Agent - Modular AI-Powered Network Configuration
+# LLM Network Agent - Modular AI-Powered Network Configuration Agent
 
 An AI agent that acts as a **Network Engineer**, managing network infrastructure using a **modular architecture of MCP (Model Context Protocol) servers**. Add or remove MCP servers based on your specific needs.
 
-https://github.com/user-attachments/assets/demonstration-video
 
 ## 🎯 What It Does
 
