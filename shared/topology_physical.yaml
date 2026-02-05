@@ -1,0 +1,44 @@
+---
+# Physical Network Topology Source of Truth
+# Format: List of links between Device:Interface pairs.
+# Used to ground the AI so it doesn't hallucinate connections.
+
+links:
+  # Link 1: Router to PC3 Network
+  - endpoints:
+      - device: router
+        interface: FastEthernet0/1
+      - device: pc3
+        interface: eth0
+    subnet: 20.0.0.0/24
+    description: "Point-to-Point (or switched) link to PC3"
+
+  # Link 2: Router to PC1/PC2 Network (Shared Segment)
+  - endpoints:
+      - device: router
+        interface: FastEthernet0/0
+      - device: pc1
+        interface: eth0
+      - device: pc2
+        interface: eth0
+    subnet: 40.0.0.0/24
+    description: "Lan segment for Workstations"
+
+device_roles:
+  router:
+    type: cisco_ios
+    interfaces:
+      FastEthernet0/0: Gateway for 40.0.0.0/24 (IP: .99 or .100)
+      FastEthernet0/1: Gateway for 20.0.0.0/24 (IP: .99)
+  pc1:
+    type: linux_container
+    interfaces: 
+      eth0: Connected to 40.0.0.0/24
+  pc2:
+    type: linux_container
+    interfaces:
+      eth0: Connected to 40.0.0.0/24
+  pc3:
+    type: linux_container
+    interfaces:
+      eth0: Connected to 20.0.0.0/24

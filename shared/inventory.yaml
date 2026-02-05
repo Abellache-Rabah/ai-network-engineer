@@ -1,0 +1,125 @@
+groups:
+  cisco:
+    platform: cisco_ios
+    connection_type: telnet
+  linux:
+    platform: linux
+    connection_type: telnet
+
+hosts:
+  # Routers
+  R1:
+    hostname: localhost
+    port: 5008
+    groups:
+    - cisco
+    data:
+      mgmt_ip: localhost
+      role: core_router
+      interfaces:
+      - name: FastEthernet0/0
+      	ip: 40.0.0.99/24
+        description: Link to Switch1 (e2)
+      - name: FastEthernet0/1
+      	ip: 20.0.0.99/24
+        description: Link to Switch2 (e0)
+      - name: FastEthernet2/0
+      	ip: 10.0.12.1/24
+        description: Link to R2 (f2/0)
+      - name: FastEthernet3/0
+      	ip: 10.0.13.1/24
+        description: Link to R3 (f0/1)
+  
+  R2:
+    hostname: localhost
+    port: 5009
+    groups:
+    - cisco
+    data:
+      mgmt_ip: localhost
+      role: distribution_router
+      interfaces:
+      - name: FastEthernet0/0
+      	ip: 44.0.0.99/24
+        description: Link to Switch3 (e1)
+      - name: FastEthernet2/0
+      	ip: 10.0.12.2/24
+        description: Link to R1 (f2/0)
+      - name: FastEthernet3/0
+      	ip: 10.0.23.2/24
+        description: Link to R3 (f2/0)
+  
+  R3:
+    hostname: localhost
+    port: 5010
+    groups:
+    - cisco
+    data:
+      mgmt_ip: localhost
+      role: distribution_router
+      interfaces:
+      - name: FastEthernet0/0
+      	ip: 50.0.0.99/24
+        description: Link to Switch4 (e1)
+      - name: FastEthernet0/1
+      	ip: 40.0.13.3/24
+        description: Link to R1 (f3/0)
+      - name: FastEthernet2/0
+      	ip: 10.0.23.3/24
+        description: Link to R2 (f3/0)
+  
+  # Linux PCs
+  PC1:
+    hostname: localhost
+    port: 5000
+    groups:
+    - linux
+    data:
+      interface: eth0
+      ip: 40.0.0.10
+      gateway: 40.0.0.99
+      connected_to: Switch1
+  
+  PC2:
+    hostname: localhost
+    port: 5002
+    groups:
+    - linux
+    data:
+      interface: eth0
+      ip: 40.0.0.20
+      gateway: 40.0.0.99
+      connected_to: Switch1
+  
+  PC3:
+    hostname: localhost
+    port: 5007
+    groups:
+    - linux
+    data:
+      interface: eth0
+      ip: 20.0.0.10
+      gateway: 20.0.0.99
+      connected_to: Switch2
+  
+  PC4:
+    hostname: localhost
+    port: 5013
+    groups:
+    - linux
+    data:
+      interface: eth0
+      ip: 44.0.0.1
+      gateway: 44.0.0.99
+      connected_to: Switch3
+  
+  PC5:
+    hostname: localhost
+    port: 5015
+    groups:
+    - linux
+    data:
+      interface: eth0
+      ip: 50.0.0.1
+      gateway: 50.0.0.99
+      connected_to: Switch4
